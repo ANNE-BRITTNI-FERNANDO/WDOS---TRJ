@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet" type='text/css'>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <link rel="stylesheet" href="Event 2.css">
+</head>
+
+<body>
+
+  <body>
+
+    <div id="app" x-data="{ version: '1.0.0', mobileMenu: false }">
+      <header class="absolute inset-x-0 top-0 z-50 min-w-full w-full">
+        <nav class="flex items-center justify-between p-6 lg:px-8 min-w-full w-full" aria-label="Global">
+          <div class="flex lg:flex-1 lg:mr-8">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">The Royal Jade</span>
+              <img class=" w-auto h-16 sm:h-24 md:h-24 lg:h-20 xl:h-30" src="TRJ Transaprent Logo.png"
+                alt="Your Company Logo">
+            </a>
+          </div>
+          <div class="flex lg:hidden">
+            <button type="button" x-on:click="mobileMenu = !mobileMenu"
+              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
+              <span class="sr-only">Open main menu</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+          <div class="hidden lg:flex lg:gap-x-12">
+            <a href="index.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Home</a>
+            <a href="Branches.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Hotel
+              Branches</a>
+            <a href="Adventure.html"
+              class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Adventures</a>
+            <span class="text-md font-semibold leading-6 text-gray-900 relative block text-white font-black"
+              x-data="{ show: false }" x-on:mouseenter="show=true" x-on:mouseleave="show=false">
+              <a href="Restaurant.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">
+                Restaurants
+              </a>
+              <span class="block absolute top-6 left-0 bg-white" x-show="show">
+                <a href="Event 1.html"
+                  class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Parties</a>
+                <a href="Event 2.html"
+                  class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Events</a>
+              </span>
+            </span>
+            <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Contact Us</a>
+            <a href="booking.html"
+              class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Bookings</a>
+
+          </div>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black lg:ml-8">TRJ Class
+              <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </nav>
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div class="lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenu">
+          <!-- Background backdrop, show/hide based on slide-over state. -->
+          <div class="fixed inset-0 z-50"></div>
+          <div
+            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="flex items-center justify-between">
+              <a href="#" class="-m-1.5 p-1.5">
+                <span class="sr-only">TRJ</span>
+                <img class="h-8 w-auto" src="TRJ Original Logo.png" alt="">
+              </a>
+              <button type="button" x-on:click="mobileMenu = !mobileMenu"
+                class="-m-2.5 rounded-md p-2.5 text-white-700">
+                <span class="sr-only">Close menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-white-500/10">
+                <div class="space-y-2 py-6">
+                  <a href="index.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                  <a href="Branches.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Hotel
+                    Branches</a>
+                  <a href="Adventure.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Adventures</a>
+                  <a href="Restaurant.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Restaurant</a>
+                  <a href="Event 1.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Parties</a>
+                  <a href="Event 2.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Events</a>
+                  <a href="#"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
+                    Us</a>
+                  <a href="booking.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book
+                    Now</a>
+                </div>
+                <div class="py-6">
+                  <a href="#"
+                    class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                    in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="background">
+      <div class="centering">
+        <span class="cool-heading">
+
+          <span class="text-cut">
+            OTHER EVENTS
+          </span>
+        </span>
+        <br>
+        <div class="articles">
+          <article>
+            <figure>
+              <img src="pexels-rachel-claire-4992862.jpg" alt="photography-workshop">
+            </figure>
+            <div class="article-preview">
+              <h2>Outdoor Dining</h2>
+              <p>
+                Experience the charm of outdoor dining at our hotels.
+                Enjoy al fresco meals in a delightful ambiance, surrounded by nature and fresh air.
+                Discover exquisite cuisine and impeccable service while savoring the beauty of the great
+                outdoors
+                at our hotels.
+                <br>
+                <br>
+                <br><br>
+              </p>
+            </div>
+          </article>
+          <article>
+            <figure>
+              <img src="photography-workshop.jpg" alt="photography-workshop">
+            </figure>
+            <div class="article-preview">
+              <h2>Photography Workshops</h2>
+              <p>
+                Unlock your creativity through our photography workshops.
+                Join us to explore the art and techniques of photography in a relaxed and inspiring
+                setting.
+                Learn from seasoned photographers, capture stunning moments, and refine your photography
+                skills.
+                <br><br>
+            </div>
+          </article>
+          <article>
+            <figure>
+              <img src="Bird Watching.jpg" alt="Bird Watching">
+            </figure>
+            <div class="article-preview">
+              <h2>Bird Watching</h2>
+              <p>
+                Embark on a tranquil journey into the world of birds with our bird-watching experiences.
+                Immerse yourself in the beauty of nature as you observe a diverse array of bird species
+                in their
+                natural habitats. Our guided bird-watching tours are led by knowledgeable experts who
+                will help you
+                spot and identify various birds, from colorful songbirds to majestic raptors.
+              </p>
+            </div>
+          </article>
+          <article>
+            <figure>
+              <img src="Environmental Education Programs.jpg" alt="Environmental Education Programs">
+            </figure>
+            <div class="article-preview">
+              <h2>Environmental Education Programs</h2>
+              <p>
+                Explore, learn, and connect with nature through our engaging environmental education
+                programs.
+                Designed for all ages, our programs provide hands-on experiences that deepen your
+                understanding
+                of the natural world and foster a sense of stewardship for the environment.
+                <br><br>
+              </p>
+            </div>
+          </article>
+          <article>
+            <figure>
+              <img src="Campfires and Stargazing.jpg" alt="Campfires and Stargazing">
+            </figure>
+            <div class="article-preview">
+              <h2>Campfires and Stargazing</h2>
+              <p>
+                Experience the magic of campfires and stargazing at our enchanting location.
+                Our campfire and stargazing events provide the perfect opportunity to unwind, connect
+                with nature,
+                and enjoy the beauty of the night sky.
+                <br><br><br>
+              </p>
+            </div>
+          </article>
+          <article>
+            <figure>
+              <img src="Forest Treasure Hunts.jpg" alt="">
+            </figure>
+            <div class="article-preview">
+              <h2>Forest Treasure Hunts</h2>
+              <p>
+                Embark on an exciting forest treasure hunt adventure! Our forest treasure hunts
+                are a thrilling way to explore the beauty of the wilderness while engaging in a fun and
+                interactive activity. Join us for a forest treasure hunt and create unforgettable
+                memories as you explore the great outdoors in a whole new way!
+                <br>
+
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <footer class="mt-8">
+      <p>&copy; TRJ, 2023. All rights reserved.</p>
+    </footer>
+
+  </body>
+
+</html>

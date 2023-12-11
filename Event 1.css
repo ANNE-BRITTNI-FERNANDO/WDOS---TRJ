@@ -1,0 +1,67 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('bridge.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1f511b;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.333% - 20px), 1fr));
+    /* Adjust width and gap as needed */
+    gap: 20px;
+}
+
+.image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+p {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f511b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    margin-top: 20px;
+    background-color: #1f511b;
+    color: #edb4b4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3067b9;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+footer p {
+    color: #ffffff;
+}

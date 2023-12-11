@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+</head>
+
+<body>
+
+    <body class="bg-gray-100 font-sans">
+
+        <div class="container mx-auto p-4 flex flex-col items-center">
+            <h1 class="text-3xl font-bold mb-4 text-indigo-600">Booking History</h1>
+            <ul id="bookingList" class="space-y-4 w-full max-w-lg">
+                <!-- Booking history will be displayed here -->
+            </ul>
+
+            <button onclick="goToHome()"
+                class="mt-8 bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo">
+                Exit
+            </button>
+        </div>
+
+        <script>
+
+
+
+            // Fetch past bookings from local storage
+            const pastBookings = JSON.parse(localStorage.getItem('pastBookings')) || [];
+
+            // Display past bookings on the page
+            const bookingList = document.getElementById('bookingList');
+            pastBookings.forEach((booking, index) => {
+                // Ensure the calculateTotal function is called
+                const details = calculateTotal(booking);
+
+                const listItem = document.createElement('li');
+                listItem.className = 'bg-white p-4 rounded shadow';
+                listItem.innerHTML = `
+                <!-- Modify this template based on your actual data structure -->
+                <strong class="block text-xl font-bold mb-2">Booking ${index + 1}</strong>
+                <p><span class="font-bold">Check-in:</span> ${booking.hotel.checkIn}</p>
+                <p><span class="font-bold">Check-out:</span> ${booking.hotel.checkOut}</p>
+                <p><span class="font-bold">Number of Rooms:</span> ${booking.hotel.numberOfRooms}</p>
+                <p><span class="font-bold">Adults:</span> ${booking.adventure.adults}</p>
+                <p><span class="font-bold">Children:</span> ${booking.adventure.children}</p>
+                <p><span class="font-bold">Extra Beds:</span> ${booking.hotel.extraBeds || 0}</p>
+                <p><span class="font-bold">Promo Code:</span> ${booking.promoCode}</p>
+                <p><span class="font-bold">Hotel Booking Cost:</span> ${details.totalHotel}</p>
+                <p><span class="font-bold">Adventure Booking Cost:</span> ${details.totalAdventure}</p>
+                <p><span class="font-bold">Discount Percentage:</span> ${details.discount}</p>
+                <p><span class="font-bold">Price After Discount:</span> ${details.total}</p>
+
+            `;
+                bookingList.appendChild(listItem);
+            });
+
+            // Move the function definition outside the loop
+            function goToHome() {
+                window.location.href = "/HTML/Home.html";
+            }
+
+            // Define the calculateTotal function
+            function calculateTotal(booking) {
+                // Calculate the total price of the hotel booking
+                let totalHotel = 0;
+
+                if (booking.hotel.roomType === 'single') {
+                    totalHotel = 5000 * booking.hotel.numberOfRooms;
+                } else if (booking.hotel.roomType === 'double') {
+                    totalHotel = 10000 * booking.hotel.numberOfRooms;
+                } else if (booking.hotel.roomType === 'triple') {
+                    totalHotel = 15000 * booking.hotel.numberOfRooms;
+                }
+
+                // Calculate the extra beds price
+                const extraBedsPricePerBed = 1000; // Adjust the price per extra bed as needed
+                const numberOfExtraBeds = booking.hotel.extraBeds || 0;
+                const numberOfRooms = booking.hotel.numberOfRooms || 1;
+
+                totalHotel += extraBedsPricePerBed * numberOfExtraBeds * numberOfRooms;
+
+                // Calculate the number of days the user is staying
+                const checkInDate = new Date(booking.hotel.checkIn);
+                const checkOutDate = new Date(booking.hotel.checkOut);
+                const timeDifference = checkOutDate.getTime() - checkInDate.getTime();
+                const numberOfDays = timeDifference / (1000 * 3600 * 24);
+
+                // Calculate the total price of the hotel booking after accounting for the number of days
+                totalHotel *= numberOfDays;
+
+                // Calculate the total price of the adventure booking
+                let totalAdventure = 0;
+
+                if (booking.adventure.adventure === 'hiking') {
+                    totalAdventure = 5000 * booking.adventure.adults + 2500 * booking.adventure.children;
+                } else if (booking.adventure.adventure === 'sinharaja') {
+                    totalAdventure = 10000 * booking.adventure.adults + 5000 * booking.adventure.children;
+                } else if (booking.adventure.adventure === 'rock-climbing') {
+                    totalAdventure = 15000 * booking.adventure.adults + 7500 * booking.adventure.children;
+                } else if (booking.adventure.adventure === 'paragliding') {
+                    totalAdventure = 20000 * booking.adventure.adults + 10000 * booking.adventure.children;
+                }
+
+
+
+                // Calculate the discount percentage
+                let discount = 0;
+
+                if (booking.promoCode === 'Promo123') {
+                    discount = 0.1 * (totalHotel + totalAdventure);
+                }
+
+                // Calculate the total price after discount
+                const totalPriceAfterDiscount = totalHotel + totalAdventure - discount;
+
+                // Return the calculated details
+                return {
+                    totalHotel: totalHotel,
+                    totalAdventure: totalAdventure,
+                    discount: discount,
+                    total: totalPriceAfterDiscount
+                };
+
+            }
+
+        </script>
+    </body>
+</body>
+
+</html>

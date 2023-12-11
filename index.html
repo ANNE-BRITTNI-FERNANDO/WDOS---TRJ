@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Royal Jade</title>
+  <link rel="icon" type="image/x-icon" href="the-royal-jade-website-favicon-black.ico">
+  <link rel="stylesheet" href="Styles.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+  <div id="app" x-data="{ version: '1.0.0', mobileMenu: false }">
+    <header class="absolute inset-x-0 top-0 z-50 min-w-full w-full">
+      <nav class="flex items-center justify-between p-6 lg:px-8 min-w-full w-full" aria-label="Global">
+        <div class="flex lg:flex-1 lg:mr-8">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">The Royal Jade</span>
+            <img class=" w-auto h-16 sm:h-24 md:h-24 lg:h-20 xl:h-30" src="TRJ Transaprent Logo.png"
+              alt="Your Company Logo">
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" x-on:click="mobileMenu = !mobileMenu"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="index.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Home</a>
+          <a href="Branches.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Hotel
+            Branches</a>
+          <a href="Adventure.html"
+            class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Adventures</a>
+          <span class="text-md font-semibold leading-6 text-gray-900 relative block text-white font-black"
+            x-data="{ show: false }" x-on:mouseenter="show=true" x-on:mouseleave="show=false">
+            <a href="Restaurant.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">
+              Restaurants
+            </a>
+            <span class="block absolute top-6 left-0 bg-white" x-show="show">
+              <a href="Event 1.html"
+                class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Parties</a>
+              <a href="Event 2.html"
+                class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Events</a>
+            </span>
+          </span>
+          <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Contact Us</a>
+          <a href="booking.html"
+            class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Bookings</a>
+
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black lg:ml-8">TRJ Class
+            <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <div class="lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenu">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">TRJ</span>
+              <img class="h-8 w-auto" src="TRJ Original Logo.png" alt="">
+            </a>
+            <button type="button" x-on:click="mobileMenu = !mobileMenu" class="-m-2.5 rounded-md p-2.5 text-white-700">
+              <span class="sr-only">Close menu</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-white-500/10">
+              <div class="space-y-2 py-6">
+                <a href="index.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                <a href="Branches.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Hotel
+                  Branches</a>
+                <a href="Adventure.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Adventures</a>
+                <a href="Restaurant.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Restaurant</a>
+                <a href="Event 1.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Parties</a>
+                <a href="Event 2.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Events</a>
+                <a href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
+                  Us</a>
+                <a href="booking.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book
+                  Now</a>
+              </div>
+              <div class="py-6">
+                <a href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                  in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="image-container">
+    <img src="Hotel view crop.jpg" alt="TRJ" class="background-image" />
+  </div>
+
+  <div class="Background-certificate">
+    <h2 class="certificate-heading">HOTEL AWARDS AND CERTIFICATES</h2>
+    <div class="certifications">
+      <div class="certificate">
+        <img src="forbes certificate.jpeg" alt="Forbes Certification">
+      </div>
+      <div class="certificate">
+        <img src="aaa diamond certifications.png" alt="AAA Diamond Certification">
+      </div>
+      <div class="certificate">
+        <img src="rainforest alliance certification.png" alt="Rainforest Alliance Certified">
+      </div>
+      <div class="certificate">
+        <img src="safe hotels certfication.jpeg" alt="Safe Hotels Certification">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="room-heading">ACCOMODATION</h2>
+    <section class="room-container">
+      <div class="room">
+        <div class="room-img"></div>
+        <h3><b>Jr. Suite</b></h3>
+        <p>
+          You'll find everything you need to enjoy your stay in Sri Lanka. In the Junior Suites at the Hotel TRJ Sri
+          Lanka, you'll find
+          one king-size bed (180x200) or two double beds (135x200 cm), satellite TV, air conditioning, a minibar,
+          an electric kettle, and a balcony or terrace.
+        </p>
+        <br>
+        Price: 6000 LKR + taxes <br>
+        Number of Persons: 2
+      </div>
+      <div class="room">
+        <div class="room-img"></div>
+        <h3><b>Jr. Suite Superior</b></h3>
+        <p>
+          The Hotel TRJ Sri Lanka provides its Superior Junior Suites, 40-m2 rooms fully equipped to offer you the best
+          amenities.
+          These suites have two double beds (135x200 cm), a sofa bed in the lounge area, satellite TV, air conditioning,
+          a minibar, an electric kettle, and a balcony or terrace with views of the sea. </p><br>
+        Price: 10000 LKR + taxes <br>
+        Number of Persons: 4
+
+      </div>
+      <div class="room">
+        <div class="room-img"></div>
+        <h3><b>Family Suite</b></h3>
+        <p>
+          The perfect accommodations for enjoying a family vacation. These 77-m2 rooms have two bedrooms,
+          one with a king-size bed (180x200 cm) and the other with two double beds (135x200 cm), a sofa bed in the
+          lounge area,
+          satellite TV, air conditioning, a minibar, an electric kettle, and a balcony or terrace.
+        </p>
+        Price: 17000 LKR + taxes <br>
+        Number of Persons: 4
+
+      </div>
+      <div class="room">
+        <div class="room-img"></div>
+        <h3><b>Suite</b></h3>
+        <p>
+          The Suites at the Hotel Riu Sri Lanka are specially designed to provide you with the best amenities during
+          your holiday.
+          These 55-m2 rooms have one king-size bed (180x200 cm), a sofa in the lounge area, satellite TV, air
+          conditioning,
+          a minibar, an electric kettle, and a balcony or terrace with views of the sea.
+        </p>
+        Price: 28000 LKR + taxes<br>
+        Number of Persons: 2
+
+      </div>
+    </section>
+
+
+
+    <div class="facilities">
+      <div class="facilities_card">
+        <figure>
+          <img src="Mini-Bar.jpg" alt="Mini-Bar" title="24/7 Open-Mini-Bar" />
+        </figure>
+        <h2>24/7 Open-Mini-Bar</h2>
+      </div>
+      <div class="facilities_card">
+        <figure>
+          <img src="indoor pool.jpg" alt="Inddor Pool" title="Indoor Pool" />
+        </figure>
+        <h2>Indoor Pool</h2>
+      </div>
+      <div class="facilities_card">
+        <figure>
+          <img src="Outdoor Dining Area.jpg" alt="Outdoor Dining Area" title="Outdoor Dining Area" />
+        </figure>
+        <h2>Outdoor Dining Area</h2>
+      </div>
+      <div class="facilities_card">
+        <figure>
+          <img src="Spa.jpg" alt="Spa" title="Spa" />
+        </figure>
+        <h2>Spa</h2>
+      </div>
+    </div>
+
+
+    <section id="services" class="services">
+      <h2>The Royal Jade</h2>
+      <div class="service">
+        <h3>About Us</h3>
+        <p>Welcome to The Royal Jade, your gateway to an unforgettable experience nestled near the enchanting Sinharaja
+          Rainforest in Sri Lanka. Our hotel is more than just a place to stay; it's a destination where nature and
+          luxury coexist harmoniously.
+          At The Royal Jade, we pride ourselves on providing top-notch accommodations, outstanding service, and a wide
+          range of amenities to make your stay truly memorable. Whether you're an eco-adventurer, a birdwatcher, or
+          simply seeking tranquility, our hotel is the perfect starting point for your journey.
+        </p>
+        <a href="#" class="learn-more-button" title="Learn More">
+          Learn More (Location: Near Sinharaja Rainforest)
+        </a>
+        <div id="additional-info-1" style="display: none; text-align: center;">
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2798650471623!2d80.48637097483025!3d6.357809593632178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3e15337214f73%3A0x2a183b31df3e363a!2sSinharaja%20Forest%20Edge!5e0!3m2!1sen!2slk!4v1694408965054!5m2!1sen!2slk"
+              width="100%" height="0" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="service">
+        <h3>Our Vision</h3>
+        <p>Our vision is to create a harmonious blend of luxury and nature, where guests can escape the hustle and
+          bustle of everyday life and reconnect with the environment. We are committed to sustainable practices,
+          ensuring that our presence leaves a minimal ecological footprint on the pristine rainforest.
+          Thank you for considering The Royal Jade as your retreat in the heart of nature. We look forward to welcoming
+          you to our haven of serenity and natural beauty.</p>
+      </div>
+      <div class="service">
+        <h3>Our Team</h3>
+        <p>Our team is comprised of passionate individuals who are committed to providing you with an unforgettable
+          experience. We are dedicated to ensuring that your stay at The Royal Jade is nothing short of extraordinary.
+        </p>
+
+      </div>
+    </section>
+
+
+
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <p>Have questions or want to discuss your event? Get in touch with us.</p>
+      <a href="mailto:TRJ_Contact@gmail.com" class="cta-button">Email Us</a>
+      <br>
+      <a href="tel:+1234567890" class="cta-button">Call Us</a>
+
+    </section>
+
+
+
+
+
+    <section>
+      <footer class="top">
+        <img src="TRJ Transaprent Logo.png" />
+        <div class="links">
+          <div class="links-column">
+            <h2>Quick Links</h2>
+            <a href="index.html">Home</a>
+            <a href="Branches.html">Branches</a>
+            <a href="Adventure.html">Adventure</a>
+            <a href="Restaurant.html">Restaurant</a>
+            <a href="booking.html">Booking</a>
+          </div>
+          <div class="links-column">
+            <h2>Resources</h2>
+            <a href="Event 1.html">Parties</a>
+            <a href="Event 2.html">Other Events</a>
+            <a href="Contact.html">Accessibility</a>
+
+          </div>
+          <div class="links-column socials-column">
+            <h2>Social Media</h2>
+            <p>
+              Follow us on social media to find out the latest updates on our
+              progress.
+            </p>
+            <div class="socials">
+              <a class="fa-brands fa-facebook"></a>
+              <a class="fa-brands fa-instagram"></a>
+              <a class="fa-brands fa-linkedin"></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <footer class="bottom">
+        <p class="copyright">© 2023 All rights reserved</p>
+        <div class="legal">
+          <a> License </a>
+          <a> Terms </a>
+          <a> Privacy </a>
+        </div>
+      </footer>
+    </section>
+
+    <script>
+      const learnMoreButtons = document.querySelectorAll(".learn-more-button");
+
+      learnMoreButtons.forEach((button, index) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const additionalInfo = document.getElementById(`additional-info-${index + 1}`);
+
+          if (additionalInfo.style.display === "none" || additionalInfo.style.display === "") {
+            additionalInfo.style.display = "block";
+          } else {
+            additionalInfo.style.display = "none";
+          }
+        });
+      });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

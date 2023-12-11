@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body class="bg-cover bg-center" style="background-image: url('living\ area.jpg')" x-data="_app" x-init="init">
+    <div x-data="{ 
+        hotelBooking: {}, 
+        adventureBooking: {},
+        promoCode: 'Promo123', 
+        total: 0, 
+        showExtraBedsSection: false,
+        step: 1,
+    }">
+
+        <nav class="bg-green-700 p-10 pb-20 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div id="app" x-data="{ version: '1.0.0', mobileMenu: false }">
+                <header class="absolute inset-x-0 top-0 z-50 min-w-full w-full">
+                    <nav class="flex items-center justify-between p-6 lg:px-8 min-w-full w-full" aria-label="Global">
+                        <div class="flex lg:flex-1 lg:mr-8">
+                            <a href="#" class="-m-1.5 p-1.5">
+                                <span class="sr-only">The Royal Jade</span>
+                                <img class=" w-auto h-16 sm:h-24 md:h-24 lg:h-20 xl:h-30" src="TRJ Transaprent Logo.png"
+                                    alt="Your Company Logo">
+                            </a>
+                        </div>
+                        <div class="flex lg:hidden">
+                            <button type="button" x-on:click="mobileMenu = !mobileMenu"
+                                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
+                                <span class="sr-only">Open main menu</span>
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                            <a href="index.html"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Home</a>
+                            <a href="Branches.html"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Hotel
+                                Branches</a>
+                            <a href="Adventure.html"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Adventures</a>
+                            <span
+                                class="text-md font-semibold leading-6 text-gray-900 relative block text-white font-black"
+                                x-data="{ show: false }" x-on:mouseenter="show=true" x-on:mouseleave="show=false">
+                                <a href="Restaurant.html"
+                                    class="text-md font-semibold leading-6 text-gray-900 text-white font-black">
+                                    Restaurants
+                                </a>
+                                <span class="block absolute top-6 left-0 bg-white" x-show="show">
+                                    <a href="Event 1.html"
+                                        class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Parties</a>
+                                    <a href="Event 2.html"
+                                        class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Events</a>
+                                </span>
+                            </span>
+                            <a href="#"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Contact
+                                Us</a>
+                            <a href="booking.html"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Bookings</a>
+
+                        </div>
+                        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <a href="#"
+                                class="text-md font-semibold leading-6 text-gray-900 text-white font-black lg:ml-8">TRJ
+                                Class
+                                <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </nav>
+                    <!-- Mobile menu, show/hide based on menu open state. -->
+                    <div class="lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenu">
+                        <!-- Background backdrop, show/hide based on slide-over state. -->
+                        <div class="fixed inset-0 z-50"></div>
+                        <div
+                            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="-m-1.5 p-1.5">
+                                    <span class="sr-only">TRJ</span>
+                                    <img class="h-8 w-auto" src="TRJ Original Logo.png" alt="">
+                                </a>
+                                <button type="button" x-on:click="mobileMenu = !mobileMenu"
+                                    class="-m-2.5 rounded-md p-2.5 text-white-700">
+                                    <span class="sr-only">Close menu</span>
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="mt-6 flow-root">
+                                <div class="-my-6 divide-y divide-white-500/10">
+                                    <div class="space-y-2 py-6">
+                                        <a href="index.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                                        <a href="Branches.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Hotel
+                                            Branches</a>
+                                        <a href="Adventure.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Adventures</a>
+                                        <a href="Restaurant.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Restaurant</a>
+                                        <a href="Event 1.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Parties</a>
+                                        <a href="Event 2.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Events</a>
+                                        <a href="#"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
+                                            Us</a>
+                                        <a href="booking.html"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book
+                                            Now</a>
+                                    </div>
+                                    <div class="py-6">
+                                        <a href="#"
+                                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                                            in</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </nav>
+
+
+        <!-- Hotel Booking Form -->
+        <section x-show="step === 1">
+            <h1 class="text-3xl font-bold pt-5 text-white text-center mb-8">Hotel Booking</h1>
+            <form x-on:submit.prevent="saveHotelBooking; step = 2;"
+                class="mx-auto max-w-xl bg-white bg-opacity-75 p-8 rounded shadow">
+
+                <!-- Your existing hotel booking form -->
+                <div class="mb-4">
+                    <label for="hotel" class="block text-sm font-medium text-gray-700">Select Hotel</label>
+                    <select x-model="hotelBooking.hotel" id="hotel" name="hotel" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="The Royal Jade">The Royal Jade</option>
+                        <option value="RIU">RIU</option>
+                        <option value="Goldie Sands">Goldie Sands</option>
+                        <option value="Blue Waters">Blue Waters</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="checkIn" class="block text-sm font-medium text-gray-700">Check-In Date</label>
+                    <input x-model="hotelBooking.checkIn" type="date" id="checkIn" name="checkIn"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div class="mb-4">
+                    <label for="checkOut" class="block text-sm font-medium text-gray-700">Check-Out Date</label>
+                    <input x-model="hotelBooking.checkOut" type="date" id="checkOut" name="checkOut"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Flex container for Room Type and Number of Rooms on the same line -->
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Room Type -->
+                    <div class="mb-4 px-4 w-full sm:w-1/2">
+                        <label for="roomType" class="block text-sm font-medium text-gray-700">Room Type</label>
+                        <select x-model="hotelBooking.roomType" id="roomType" name="roomType" required
+                            x-on:change="updateRoomRestrictions()"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option value="single">Single</option>
+                            <option value="double">Double</option>
+                            <option value="triple">Triple</option>
+                        </select>
+                    </div>
+
+                    <!-- Number of Rooms -->
+                    <div class="mb-4 px-4 w-full sm:w-1/2">
+                        <label for="numberOfRooms" class="block text-sm font-medium text-gray-700">Number of
+                            Rooms</label>
+                        <input x-model="hotelBooking.numberOfRooms" type="number" id="numberOfRooms"
+                            name="numberOfRooms" min="1"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <!-- Flex container for Number of Adults and Number of Children on the same line -->
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Number of Adults -->
+                    <div class="mb-4 px-4 w-full sm:w-1/2">
+                        <label for="adults" class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input x-model="hotelBooking.numberOfAdults" type="number" id="adults" name="adults" max="6"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Number of Children -->
+                    <div class="mb-4 px-4 w-full sm:w-1/2">
+                        <label for="children" class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input x-model="hotelBooking.numberOfChildren" type="number" id="children" name="children"
+                            max="2"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+
+
+                <div class="mb-4">
+                    <label for="extraBeds" class="block text-sm font-medium text-gray-700">Extra Beds</label>
+                    <input x-model="hotelBooking.extraBeds" type="number" id="extraBeds" name="extraBeds"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Add other hotel booking form fields as needed -->
+
+                <button type="submit"
+                    class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                    Book Now
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Adventure Booking Form -->
+        <section x-show="step === 2">
+            <h1 class="text-3xl font-bold text-white text-center mb-8">Adventure Booking</h1>
+            <form x-on:submit.prevent="saveAdventureBooking; step = 3;"
+                class="mx-auto max-w-xl bg-white bg-opacity-75 p-8 rounded shadow">
+
+                <!-- Your existing adventure booking form -->
+                <div class="mb-4">
+                    <label for="adventure" class="block text-sm font-medium text-gray-700">Select Adventure</label>
+                    <select x-model="adventureBooking.adventure" id="adventure" name="adventure" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="hiking">Hiking</option>
+                        <option value="sinharaja">Sinharaja Forest Tour</option>
+                        <option value="rock-climbing">Rock Climbing</option>
+                        <option value="paragliding">Paragliding</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="adventureDate" class="block text-sm font-medium text-gray-700">Adventure Date</label>
+                    <input x-model="adventureBooking.date" type="date" id="adventureDate" name="adventureDate"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <!-- Flex container for Number of Adults and Number of Children on the same line -->
+                <div class="flex -mx-4">
+                    <!-- Number of Adults -->
+                    <div class="mb-4 px-4 w-1/2">
+                        <label for="adventureAdults" class="block text-sm font-medium text-gray-700">Number of
+                            Adults</label>
+                        <input x-model="adventureBooking.adults" type="number" id="adventureAdults"
+                            name="adventureAdults"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Adults Type Dropdown -->
+                    <div class="mb-4 px-4 w-1/2">
+                        <label for="adultsType" class="block text-sm font-medium text-gray-700">Adults Type</label>
+                        <select x-model="adventureBooking.adultsType" id="adultsType" name="adultsType"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option value="local">Local</option>
+                            <option value="foreign">Foreign</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="mb-4">
+                    <div class="flex mb-4">
+                        <!-- Number of Children -->
+                        <div class="w-1/2 pr-2">
+                            <label for="adventureChildren" class="block text-sm font-medium text-gray-700">Number of
+                                Children</label>
+                            <input x-model="adventureBooking.children" type="number" id="adventureChildren"
+                                name="adventureChildren"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Children Type Dropdown -->
+                        <div class="w-1/2 pl-2">
+                            <label for="childrenType" class="block text-sm font-medium text-gray-700">Children
+                                Type</label>
+                            <select x-model="adventureBooking.childrenType" id="childrenType" name="childrenType"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="local">Local</option>
+                                <option value="foreign">Foreign</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-4">
+                        <label for="needGuide" class="block text-sm font-medium text-gray-700">Do you need a
+                            guide?</label>
+                        <select x-model="adventureBooking.needGuide" id="needGuide" name="needGuide"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <!-- If the user needs a guide, show additional fields -->
+                    <div x-show="adventureBooking.needGuide === 'yes'">
+                        <div class="mb-4">
+                            <label for="guideType" class="block text-sm font-medium text-gray-700">Select Guide
+                                Type</label>
+                            <select x-model="adventureBooking.guideType" id="guideType" name="guideType"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="adultGuide">Adult Guide</option>
+                                <option value="childrenGuide">Children Guide</option>
+                            </select>
+                        </div>
+
+                        <!-- Add other guide-related fields as needed -->
+                    </div>
+
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                    Next
+                </button>
+            </form>
+        </section>
+
+        <!-- Checkout Page -->
+        <section x-show="step === 3">
+            <form x-on:submit.prevent="saveUserDetails;"
+                class="mx-auto max-w-xl bg-white bg-opacity-75 p-8 rounded shadow">
+                <h1 class="text-3xl font-bold text-black text-center mb-8">Checkout</h1>
+                <div class="mx-auto max-w-3xl bg-white p-8 rounded shadow">
+                    <!-- Display booking details and ask for promo code -->
+                    <div x-show="hotelBooking.hotel || adventureBooking.adventure">
+                        <h2 class="text-xl font-bold mb-4">Booking Details</h2>
+                        <p>Hotel: <span x-text="hotelBooking.hotel"></span></p>
+                        <p>Check-In Date: <span x-text="hotelBooking.checkIn"></span></p>
+                        <p>Check-Out Date: <span x-text="hotelBooking.checkOut"></span></p>
+                        <p>Room Type: <span x-text="hotelBooking.roomType"></span></p>
+                        <p>Number of Adults: <span x-text="hotelBooking.adults"></span></p>
+                        <p>Number of Children: <span x-text="hotelBooking.children"></span></p>
+                        <p>Extra Beds: <span x-text="hotelBooking.extraBeds"></span></p>
+                        <br>
+                        <p>Adventure: <span x-text="adventureBooking.adventure"></span></p>
+                        <p>Adventure Date: <span x-text="adventureBooking.date"></span></p>
+                        <p>Number of Adults: <span x-text="adventureBooking.adults"></span></p>
+                        <p>Number of Children: <span x-text="adventureBooking.children"></span></p>
+                        <p>Adults Type: <span x-text="adventureBooking.adultsType"></span></p>
+                        <p>Children Type: <span x-text="adventureBooking.childrenType"></span></p>
+                        <p>Need Guide: <span x-text="adventureBooking.needGuide"></span></p>
+                        <p>Guide Type: <span x-text="adventureBooking.guideType"></span></p>
+                        <br>
+
+                        <!-- Display User Details -->
+                        <div x-show="userName || userEmail || userPhone || userCountry">
+                            <h3 class="text-lg font-bold mb-2">User Details</h3>
+                            <p>Name: <span x-text="userName"></span></p>
+                            <p>Email: <span x-text="userEmail"></span></p>
+                            <p>Phone: <span x-text="userPhone"></span></p>
+                            <p>Country: <span x-text="userCountry"></span></p>
+                        </div>
+
+                        <button x-on:click="calculateTotal"
+                            class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                            Calculate Total
+                        </button>
+
+
+                        <p class="mt-6">Total: LKR. <span x-text="total"></span></p>
+
+                    </div>
+
+                    <br>
+
+                    <!-- User details form -->
+                    <h2 class="text-xl font-bold mb-4">User Details</h2>
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input x-model="userName" type="text" id="name" name="name"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input x-model="userEmail" type="email" id="email" name="email"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input x-model="userPhone" type="tel" id="phone" name="phone"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                        <input x-model="userCountry" type="text" id="country" name="country"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Card details form -->
+                    <h2 class="text-xl font-bold mb-4">Card Details</h2>
+                    <div class="mb-4">
+                        <label for="cardNumber" class="block text-sm font-medium text-gray-700">Card Number</label>
+                        <input x-model="cardNumber" type="text" id="cardNumber" name="cardNumber"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cardHolder" class="block text-sm font-medium text-gray-700">Cardholder Name</label>
+                        <input x-model="cardHolder" type="text" id="cardHolder" name="cardHolder"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="expiryDate" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+                        <input x-model="expiryDate" type="text" id="expiryDate" name="expiryDate"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+
+                    <!-- Display other booking details -->
+
+                    <div class="mb-4">
+                        <label for="promoCode" class="block text-sm font-medium text-gray-700">Enter Promo Code</label>
+                        <input x-model="promoCode" type="text" id="promoCode" name="promoCode"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <button onclick="_app().saveUserDetails()"
+                        class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                        Save Details
+                    </button>
+
+
+                    <div class="mt-6">
+                        <h2 class="text-xl font-bold mb-4">Summary</h2>
+                        <table class="w-full border-collapse">
+                            <tr>
+                                <td class="border py-2 px-4">Total Price - Hotel Booking</td>
+                                <td class="border py-2 px-4" x-text="'LKR. ' + totalHotel"></td>
+                            </tr>
+                            <tr>
+                                <td class="border py-2 px-4">Total Price - Adventure Booking</td>
+                                <td class="border py-2 px-4" x-text="'LKR. ' + totalAdventure"></td>
+                            </tr>
+                            <tr>
+                                <td class="border py-2 px-4">Discount Price</td>
+                                <td class="border py-2 px-4" x-text="'LKR. ' + discount"></td>
+                            </tr>
+                            <tr>
+                                <td class="border py-2 px-4">Price After Discount (Final Total)</td>
+                                <td class="border py-2 px-4" x-text="'LKR. ' + total"></td>
+                            </tr>
+                            <tr>
+                                <td class="border py-2 px-4">Loyalty Points Received</td>
+                                <td class="border py-2 px-4" x-text="loyaltyPoints"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Your remaining HTML code... -->
+
+
+                    <div class="mb-4">
+                        <button type="button" x-on:click="step = 1"
+                            class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                            Back to Hotel Booking
+                        </button>
+                    </div>
+
+                    <div class="mb-8">
+                        <button type="button" onclick="showThankYouModal()"
+                            class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                            Confirm Booking
+                        </button>
+                    </div>
+
+
+
+
+                </div>
+
+                <!-- Thank You Modal -->
+                <div id="thankYouModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <!-- Background overlay -->
+                        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                        </div>
+
+                        <!-- Modal Panel -->
+                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
+                            aria-hidden="true">&#8203;</span>
+
+                        <!-- Your modal content -->
+                        <div
+                            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:w-full sm:max-w-md">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <div class="sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                                        <!-- Heroicon name: check -->
+                                        <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                            Thank You for Your Booking!
+                                        </h3>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">
+                                                Your reservation has been confirmed. We look forward to hosting you!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <!-- Close Button -->
+                                <button onclick="closeThankYouModal()" type="button"
+                                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                    Close
+                                </button>
+
+                                <!-- Go to Home Button -->
+                                <a href="index.html"
+                                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-3 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                    Go to Home
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="mx-auto max-w-3xl bg-white p-8 rounded shadow flex justify-between items-center mb-2">
+                    <!-- Add to Favorites -->
+                    <button x-on:click="saveAsFavorite"
+                        class="flex-1 bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                        Add to Favorites
+                    </button>
+
+
+                    <!-- Message for Favorites -->
+                    <div x-show="showFavoriteMessage" class="text-green-500 text-sm ml-4">
+                        Added to Favorites!
+                    </div>
+                </div>
+
+
+
+                <div class="mx-auto max-w-3xl bg-white p-8 rounded shadow flex flex-wrap justify-center items-center">
+                    <!-- Past Bookings -->
+                    <!-- Past Bookings Button -->
+                    <a href="booking_history.html"
+                        class="flex-1 mb-2 sm:mb-0 sm:mr-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                        Past Bookings
+                    </a>
+
+                    <!-- Loyalty Points -->
+                    <button x-on:click="checkLoyaltyPoints"
+                        class="flex-1 bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                        Check Loyalty Points
+                    </button>
+                </div>
+
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+
+
+
+    <script>
+        function _app() {
+            return {
+                hotelBooking: {},
+                adventureBooking: {},
+                promoCode: 'Promo123',
+                total: 0,
+                showExtraBedsSection: false,
+                step: 1,
+                userName: '',
+                userEmail: '',
+                userPhone: '',
+                userCountry: '',
+                cardNumber: '',
+                cardHolder: '',
+                expiryDate: '',
+                loyaltyPoints: 0,
+                discount: 0,
+                totalHotel: 0,
+                totalAdventure: 0,
+                pastBookings: [],
+                favorites: [],
+                showThankYouMessage: false,
+                showFavoriteMessage: false,
+
+                viewPastBookings() {
+                    this.step = 4;
+                },
+
+
+
+
+                init() {
+                    this.hotelBooking = JSON.parse(localStorage.getItem('hotelBooking')) || {};
+                    this.adventureBooking = JSON.parse(localStorage.getItem('adventureBooking')) || {};
+                    this.promoCode = localStorage.getItem('promoCode') || 'Promo123';
+                    this.total = localStorage.getItem('total') || 0;
+                    this.userName = localStorage.getItem('userName') || '';
+                    this.userEmail = localStorage.getItem('userEmail') || '';
+                    this.userPhone = localStorage.getItem('userPhone') || '';
+                    this.userCountry = localStorage.getItem('userCountry') || '';
+                    this.cardNumber = localStorage.getItem('cardNumber') || '';
+                    this.cardHolder = localStorage.getItem('cardHolder') || '';
+                    this.expiryDate = localStorage.getItem('expiryDate') || '';
+                    this.loyaltyPoints = localStorage.getItem('loyaltyPoints') || 0;
+                    this.discount = localStorage.getItem('discount') || 0;
+                    this.totalHotel = localStorage.getItem('totalHotel') || 0;
+                    this.totalAdventure = localStorage.getItem('totalAdventure') || 0;
+                    this.pastBookings = JSON.parse(localStorage.getItem('pastBookings')) || [];
+                    this.updateMaxValues();
+                    this.loadPastBookings();
+                    this.loadFavorites();
+
+
+
+                },
+
+                saveHotelBooking() {
+                    // Save the hotel booking details in the local storage
+                    localStorage.setItem('hotelBooking', JSON.stringify(this.hotelBooking));
+                },
+
+                saveAdventureBooking() {
+                    // Save the adventure booking details in the local storage
+                    localStorage.setItem('adventureBooking', JSON.stringify(this.adventureBooking));
+                },
+
+                saveUserDetails() {
+                    const userDetails = {
+                        userName: this.userName,
+                        userEmail: this.userEmail,
+                        userPhone: this.userPhone,
+                        userCountry: this.userCountry,
+
+                    };
+
+                    // Save user details to local storage
+                    localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+                    // Add user details to past bookings array
+                    this.saveBooking({ type: 'userDetails', details: userDetails });
+
+
+                },
+
+
+                saveBooking() {
+                    const bookingDetails = {
+                        hotel: JSON.parse(JSON.stringify(this.hotelBooking)),
+                        adventure: JSON.parse(JSON.stringify(this.adventureBooking)),
+                        userDetails: {
+                            userName: this.userName,
+                            userEmail: this.userEmail,
+                            userPhone: this.userPhone,
+                            userCountry: this.userCountry,
+                        },
+
+                        details: this.calculateTotal(),
+
+                        confirmBooking() {
+                            // Perform any necessary actions here
+
+                            // Set showThankYouMessage to true to display the thank you message
+                            this.showThankYouMessage = true;
+                        }
+                    };
+
+                    // Add the booking details to the past bookings array
+                    this.pastBookings.push(bookingDetails);
+
+                    // Save the updated past bookings array to local storage
+                    localStorage.setItem('pastBookings', JSON.stringify(this.pastBookings));
+                },
+
+
+                calculateTotal() {
+                    // Your existing calculation logic here...
+
+                    return {
+                        totalHotel: this.totalHotel,
+                        totalAdventure: this.totalAdventure,
+                        discount: this.discount,
+                        total: this.total,
+                        loyaltyPoints: this.loyaltyPoints,
+                        promoCode: this.promoCode,
+                        finalDiscount: this.totalHotel + this.totalAdventure - this.discount,
+                    };
+                },
+
+
+                checkLoyaltyPoints() {
+                    alert(`Earned Loyalty Points: ${this.loyaltyPoints}`);
+                },
+
+                saveAsFavorite() {
+
+
+                    // Set showFavoriteMessage to true to display the message
+                    this.showFavoriteMessage = true;
+
+                    // Save the updated favorites array to local storage
+                    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+                },
+
+                saveAsFavorite() {
+                    // Create a copy of the current booking details
+                    const favoriteBooking = {
+                        hotel: JSON.parse(JSON.stringify(this.hotelBooking)),
+                        adventure: JSON.parse(JSON.stringify(this.adventureBooking)),
+                        userDetails: {
+                            userName: this.userName,
+                            userEmail: this.userEmail,
+                            userPhone: this.userPhone,
+                            userCountry: this.userCountry,
+                        },
+                    };
+
+                    // Add the favorite to the favorites array
+                    this.favorites.push(favoriteBooking);
+
+                    // Set showFavoriteMessage to true to display the message
+                    this.showFavoriteMessage = true;
+
+                    // Save the updated favorites array to local storage
+                    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+                },
+
+
+
+                calculateTotal() {
+                    // Calculate the total price of the booking
+                    this.totalHotel = 0;
+                    this.totalAdventure = 0;
+                    this.discount = 0;
+                    this.total = 0;
+                    this.loyaltyPoints = 0;
+
+                    // Calculate the total price of the hotel booking
+                    if (this.hotelBooking.roomType === 'single') {
+                        this.totalHotel = 5000 * this.hotelBooking.numberOfRooms;
+                    } else if (this.hotelBooking.roomType === 'double') {
+                        this.totalHotel = 10000 * this.hotelBooking.numberOfRooms;
+                    } else if (this.hotelBooking.roomType === 'triple') {
+                        this.totalHotel = 15000 * this.hotelBooking.numberOfRooms;
+                    }
+
+                    // Calculate the extra beds price
+                    const extraBedsPricePerBed = 1000; // Adjust the price per extra bed as needed
+                    const numberOfExtraBeds = this.hotelBooking.extraBeds || 0;
+                    const numberOfRooms = this.hotelBooking.numberOfRooms || 1;
+
+                    this.totalHotel += extraBedsPricePerBed * numberOfExtraBeds * numberOfRooms;
+
+                    // Calculate the number of days the user is staying
+                    const checkInDate = new Date(this.hotelBooking.checkIn);
+                    const checkOutDate = new Date(this.hotelBooking.checkOut);
+                    const timeDifference = checkOutDate.getTime() - checkInDate.getTime();
+                    const numberOfDays = timeDifference / (1000 * 3600 * 24);
+
+                    // Calculate the total price of the hotel booking after accounting for the number of days
+                    this.totalHotel *= numberOfDays;
+
+                    // Calculate the total price of the adventure booking
+                    if (this.adventureBooking.adventure === 'hiking') {
+                        this.totalAdventure = 5000 * this.adventureBooking.adults + 2500 * this.adventureBooking.children;
+                    } else if (this.adventureBooking.adventure === 'sinharaja') {
+                        this.totalAdventure = 10000 * this.adventureBooking.adults + 5000 * this.adventureBooking.children;
+                    } else if (this.adventureBooking.adventure === 'rock-climbing') {
+                        this.totalAdventure = 15000 * this.adventureBooking.adults + 7500 * this.adventureBooking.children;
+                    } else if (this.adventureBooking.adventure === 'paragliding') {
+                        this.totalAdventure = 20000 * this.adventureBooking.adults + 10000 * this.adventureBooking.children;
+                    }
+
+                    // Calculate the discount
+                    if (this.promoCode === 'Promo123') {
+                        this.discount = 0.1 * (this.totalHotel + this.totalAdventure);
+                    }
+
+                    // Calculate the total price after discount
+                    this.total = this.totalHotel + this.totalAdventure - this.discount;
+
+                    // Calculate the loyalty points
+                    if (this.hotelBooking.numberOfRooms > 3) {
+                        this.loyaltyPoints = 20 * this.hotelBooking.numberOfRooms;
+                        localStorage.setItem('loyaltyPoints', this.loyaltyPoints);
+                    } else {
+                        this.loyaltyPoints = 0;
+                    }
+
+
+
+                    // Update the loyalty points in the local storage
+                    localStorage.setItem('loyaltyPoints', this.loyaltyPoints);
+
+                    return {
+                        totalHotel: this.totalHotel,
+                        totalAdventure: this.totalAdventure,
+                        discount: this.discount,
+                        total: this.total,
+                        loyaltyPoints: this.loyaltyPoints,
+                    };
+
+
+
+
+
+
+
+
+                },
+
+                updateRoomRestrictions() {
+                    // Update the number of rooms available based on the room type
+                    if (this.hotelBooking.roomType === 'single') {
+                        document.getElementById('numberOfRooms').setAttribute('max', 10);
+                    } else if (this.hotelBooking.roomType === 'double') {
+                        document.getElementById('numberOfRooms').setAttribute('max', 5);
+                    } else if (this.hotelBooking.roomType === 'triple') {
+                        document.getElementById('numberOfRooms').setAttribute('max', 3);
+                    }
+
+                    // Update the number of extra beds allowed based on the room type
+                    if (this.hotelBooking.roomType === 'single') {
+                        document.getElementById('extraBeds').setAttribute('max', 1);
+                    } else if (this.hotelBooking.roomType === 'double') {
+                        document.getElementById('extraBeds').setAttribute('max', 2);
+                    } else if (this.hotelBooking.roomType === 'triple') {
+                        document.getElementById('extraBeds').setAttribute('max', 3);
+                    }
+                },
+
+                updateMaxValues() {
+                    const adultsInput = document.getElementById('adults');
+                    const childrenInput = document.getElementById('children');
+
+                    if (adultsInput && childrenInput) {
+                        const totalMaxAdults = this.maxAdultsPerRoom[this.hotelBooking.roomType] * this.hotelBooking.numberOfRooms;
+                        const totalMaxChildren = this.maxChildrenPerRoom[this.hotelBooking.roomType] * this.hotelBooking.numberOfRooms;
+
+                        adultsInput.setAttribute('max', totalMaxAdults);
+                        childrenInput.setAttribute('max', totalMaxChildren);
+                    } else {
+                        console.error("Elements with IDs 'adults' and/or 'children' not found in the HTML.");
+                    }
+
+                    // Initialize favorites array if not available in local storage
+                    this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+                }
+
+            };
+        }
+
+
+        function showThankYouModal() {
+            document.getElementById('thankYouModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeThankYouModal() {
+            document.getElementById('thankYouModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Restaurants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+
+
+
+</head>
+
+<body class="restaurant-body bg-cover bg-center bg-repeat" style="background-image: url('washroom.jpg');">
+  <div id="app" x-data="{ version: '1.0.0', mobileMenu: false }">
+    <header class="absolute inset-x-0 top-0 z-50 min-w-full w-full">
+      <nav class="flex items-center justify-between p-6 lg:px-8 min-w-full w-full" aria-label="Global">
+        <div class="flex lg:flex-1 lg:mr-8">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">The Royal Jade</span>
+            <img class=" w-auto h-16 sm:h-24 md:h-24 lg:h-20 xl:h-30" src="TRJ Transaprent Logo.png"
+              alt="Your Company Logo">
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" x-on:click="mobileMenu = !mobileMenu"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="index.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Home</a>
+          <a href="Branches.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Hotel
+            Branches</a>
+          <a href="Adventure.html"
+            class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Adventures</a>
+          <span class="text-md font-semibold leading-6 text-gray-900 relative block text-white font-black"
+            x-data="{ show: false }" x-on:mouseenter="show=true" x-on:mouseleave="show=false">
+            <a href="Restaurant.html" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">
+              Restaurants
+            </a>
+            <span class="block absolute top-6 left-0 bg-white" x-show="show">
+              <a href="Event 1.html"
+                class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Parties</a>
+              <a href="Event 2.html"
+                class="text-md font-semibold leading-6 text-gray-900 text-black font-black">Events</a>
+            </span>
+          </span>
+          <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Contact Us</a>
+          <a href="booking.html"
+            class="text-md font-semibold leading-6 text-gray-900 text-white font-black">Bookings</a>
+
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-md font-semibold leading-6 text-gray-900 text-white font-black lg:ml-8">TRJ Class
+            <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <div class="lg:hidden" role="dialog" aria-modal="true" x-show="mobileMenu">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">TRJ</span>
+              <img class="h-8 w-auto" src="TRJ Original Logo.png" alt="">
+            </a>
+            <button type="button" x-on:click="mobileMenu = !mobileMenu" class="-m-2.5 rounded-md p-2.5 text-white-700">
+              <span class="sr-only">Close menu</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-white-500/10">
+              <div class="space-y-2 py-6">
+                <a href="index.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                <a href="Branches.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Hotel
+                  Branches</a>
+                <a href="Adventure.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Adventures</a>
+                <a href="Restaurant.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Restaurant</a>
+                <a href="Event 1.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Parties</a>
+                <a href="Event 2.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Events</a>
+                <a href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
+                  Us</a>
+                <a href="booking.html"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book
+                  Now</a>
+              </div>
+              <div class="py-6">
+                <a href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                  in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <span class="cool-heading">
+    <span class="text-cut">
+      RESTAURANT
+    </span>
+  </span>
+  <br>
+  <div class="restaurant-container">
+    <article class="restaurant-card">
+      <div class='restaurant-background'>
+        <img src="Restaurant 1.jpeg" alt="Restaurant 1">
+      </div>
+      <div class='restaurant-content'>
+        <h2>Food Circles</h2>
+        <p>At Food Circles, we are committed to delivering a memorable dining experience with a blend of Western
+          classics and
+          exotic international flavors. Join us today and embark on a culinary journey that will leave your
+          taste buds craving for more.</p>
+
+        <p>Special:</p>
+        <ul class="chips">
+          <li class="chip">Fast Food</li>
+          <li class="chip">Special menu</li>
+        </ul>
+        <div class="restaurant-action-buttons">
+          <a href="menu card overall.jpg" title="Menu1">
+            Menu
+          </a>
+          <a href="#learn-more-1" class="learn-more-button" title="Learn More">
+            Learn More
+          </a>
+          <div id="additional-info-1" style="display: none;">
+            At Food Circles, we are committed to delivering a memorable dining experience with a blend of
+            Western classics and
+            exotic international flavors. Join us today and embark on a culinary journey that will leave your
+            taste buds craving for more.
+          </div>
+        </div>
+      </div>
+    </article>
+    <br>
+    <br>
+    <br>
+    <article class="restaurant-card">
+      <div class='restaurant-background'>
+        <img src="Restaurant 2.jpeg" alt="Restaurant 2">
+      </div>
+      <div class='restaurant-content'>
+        <h2>MeInCh</h2>
+        <p> We invite you on a journey of flavors from around the world, all under one roof. Our restaurant is a
+          vibrant
+          tapestry of culinary traditions, offering a diverse menu that celebrates the richness of Mexican,
+          Chinese, and Indian cuisines.
+        </p>
+        <p>Special:</p>
+        <ul class="chips">
+          <li class="chip">Mexican cuisines</li>
+          <li class="chip">Indian cuisines</li>
+          <li class="chip">Chinese cuisines</li>
+        </ul>
+        <div class="restaurant-action-buttons">
+          <a href="menu card 2.jpg" title="Menu2">
+            Menu
+          </a>
+          <a href="#learn-more-2" class="learn-more-button" title="Learn More">
+            Learn More
+          </a>
+          <div id="additional-info-2" style="display: none;">
+            <p>We take the pride in offering a diverse and mouthwatering menu to satisfy all your cravings.
+              Whether you're in the mood for classic Western comfort food or seeking an exotic culinary
+              adventure,
+              our menu has something special for everyone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <br>
+    <br>
+    <br>
+
+    <article class="restaurant-card">
+
+      <div class='restaurant-background'>
+        <img src="restaurent bar.jpg" alt="Restaurant 3">
+      </div>
+      <div class='restaurant-content'>
+        <h2>Min-Ar</h2>
+        <p> At our restaurant, we take pride in offering a diverse and satisfying menu that caters to a wide range of
+          tastes.
+        </p>
+        <p>Special:</p>
+        <ul class="chips">
+          <li class="chip">Starters</li>
+          <li class="chip">Bar</li>
+        </ul>
+        <div class="restaurant-action-buttons">
+          <a href="menu card 3.jpg" title="Menu3">
+            Menu
+          </a>
+          <a href="#learn-more-3" class="learn-more-button" title="Learn More">
+            Learn More
+          </a>
+          <div id="additional-info-3" style="display: none;">
+            <p>Whether you're starting with our tempting starters, diving into a mouthwatering burger, or sipping on
+              a
+              carefully crafted drink, every bite and sip is designed to enhance your dining experience.
+              Join us and embark on a culinary adventure that's sure to delight your senses.
+            </p>
+          </div>
+        </div>
+    </article>
+  </div>
+
+
+  <script>
+    const learnMoreButtons = document.querySelectorAll(".learn-more-button");
+
+    learnMoreButtons.forEach((button, index) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const additionalInfo = document.getElementById(`additional-info-${index + 1}`);
+
+        if (additionalInfo.style.display === "none" || additionalInfo.style.display === "") {
+          additionalInfo.style.display = "block";
+        } else {
+          additionalInfo.style.display = "none";
+        }
+      });
+    });
+  </script>
+  <br>
+  <hr>
+  <hr>
+
+  <footer class="mt-8">
+    <p>&copy; TRJ, 2023. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,846 @@
+/* HOME PAGE CSS - BACKGROUND IMAGE */
+
+.background-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Centers the image horizontally */
+    max-width: 100%;
+    /* Ensures the image doesn't exceed its original size on large screens */
+}
+
+.image-container {
+    position: relative;
+    max-width: 100%;
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* Adventure Page and Parallax Effect */
+
+.ad-parallax-container {
+    display: flex;
+    min-height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+
+    background-attachment: fixed;
+    background-image: url(pexels-rachel-claire-4846307.jpg);
+    background-position: center;
+    background-size: cover;
+    row-gap: 4rem;
+    text-align: center;
+}
+
+.ad-buffer {
+    width: 100%;
+    min-height: 50vh;
+    background-color: #2b3d2c;
+}
+
+.ad-parallax-container2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 6rem 0;
+    background-image: url(pexels-rachel-claire-4992862.jpg);
+    gap: 1.6em;
+}
+
+/* Center-align text vertically and horizontally */
+.ad-parallax-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+#ad-parallax-paragraph {
+    color: white;
+    padding-right: 20%;
+}
+
+
+
+#ad-h1 {
+    color: white;
+    padding-left: 20%;
+}
+
+/* Media query for laptops */
+@media (min-width: 768px) {
+
+    /* Increase the font size for laptops */
+    #ad-h1 {
+        font-size: 2.8rem;
+    }
+
+    #ad-parallax-paragraph {
+        font-size: 1.7rem;
+    }
+}
+
+/* Media query for mobile phones */
+@media (max-width: 576px) {
+    #ad-h1 {
+        font-size: 1.8rem;
+        padding: 20%;
+    }
+
+    #ad-parallax-paragraph {
+        display: none;
+        /* Hide the paragraph */
+    }
+}
+
+.ad-p {
+    max-width: 70ch;
+    padding: 1em;
+    line-height: 1.5;
+}
+
+
+.ad-h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.ad-card {
+    display: flex;
+    max-width: 20%;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 1rem;
+    border-radius: 0.5rem;
+
+    background-color: white;
+    box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
+}
+
+@media (max-width: 576px) {
+    .ad-card {
+        max-width: 90%;
+        /* Adjust the maximum width for mobile screens */
+    }
+}
+
+.ad-card-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.3em;
+    background-position: center;
+    background-size: cover;
+}
+
+.ad-card:nth-of-type(1) .ad-card-img {
+    background-image: url(Hiking.jpg);
+}
+
+.ad-card:nth-of-type(2) .ad-card-img {
+    background-image: url(Forest\ Tour.jpg);
+}
+
+.ad-card:nth-of-type(3) .ad-card-img {
+    background-image: url(Rock\ Climbing.jpg);
+}
+
+.ad-card:nth-of-type(4) .ad-card-img {
+    background-image: url(Paragliding.jpg);
+}
+
+
+
+/* HOMEPAGE CSS STARTS */
+.Background-certificate {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #f9f9f9;
+    /* Background color for the container */
+}
+
+.certificate-heading {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.certifications {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-left: 80px;
+    /* Adjust the gap between certificates as needed */
+}
+
+.certificate {
+    flex: 0 0 calc(25% - 20px);
+    /* Adjust the width as needed (4 certificates per row) */
+    max-width: 160px;
+    /* Maximum width for the certificates */
+}
+
+.certificate img {
+    max-width: 100%;
+    height: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .certificate-heading {
+        font-size: 0.8rem;
+    }
+
+    .certifications {
+        padding-bottom: 20px;
+        padding-left: 50px;
+    }
+
+}
+
+
+
+/*FACILITIES CSS STARTS*/
+
+.facilities_background {
+    background-color: #4f6d6b;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.facilities {
+    display: flex;
+    left: calc(50% - 330px);
+}
+
+.facilities_card {
+    position: relative;
+    left: 0px;
+    width: 300px;
+    height: 400px;
+    background-color: #221324;
+    border-radius: 8px;
+    transition: 1s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    margin-left: 200px;
+}
+
+.facilities_card:not(:first-child) {
+    margin-left: -45px;
+}
+
+.facilities_card:hover {
+    transform: translateY(-16px);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.facilities_card:hover~.card {
+    left: 55px;
+}
+
+.facilities_card img {
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+    width: 100%;
+    width: 400px;
+}
+
+.facilities_card h2 {
+    position: absolute;
+    top: 10px;
+    /* Adjust the top position as needed */
+    left: 10px;
+    /* Adjust the left position as needed */
+    color: white;
+    /* Set the text color */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Add a background color with transparency */
+    padding: 5px 10px;
+    /* Add padding for better readability */
+    border-radius: 4px;
+    /* Add rounded corners */
+}
+
+/* Media query for screens smaller than 768px (adjust breakpoint as needed) */
+@media (max-width: 768px) {
+    .facilities {
+        flex-direction: column;
+        /* Display cards in a column layout on mobile screens */
+        align-items: center;
+        /* Center-align cards horizontally on mobile screens */
+    }
+
+    .facilities_card {
+        width: 100%;
+        /* Make cards take full width on mobile screens */
+        margin-left: 0;
+        /* Remove left margin on mobile screens */
+        margin-top: 10px;
+        /* Add top margin between cards on mobile screens */
+    }
+
+    .facilities_card img {
+        height: 380px;
+        object-fit: cover;
+        border-radius: 4px;
+        width: 100%;
+        width: 400px;
+    }
+
+    .facilities_card:not(:first-child) {
+        margin-left: 0;
+        /* Remove left margin between cards on mobile screens */
+    }
+
+    .service {
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        transition: transform 0.3s ease;
+    }
+
+
+}
+
+/*FACILITIES CSS ENDS*/
+
+
+/* Services section styles */
+.services {
+    text-align: center;
+    padding: 50px 0;
+    background-image: url('with\ river.jpg');
+}
+
+.services h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 800;
+}
+
+.service {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    transition: transform 0.3s ease;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+}
+
+.service h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+
+
+}
+
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio, adjust as needed */
+    height: 0;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Contact section styles */
+.contact {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Rooms Css */
+.room-heading {
+    text-align: center;
+    color: #fff;
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.room-container {
+    margin-top: -70px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2rem;
+    text-align: center;
+    background-attachment: fixed;
+    background-image: url(pexels-rachel-claire-4846307.jpg);
+    background-position: center;
+    background-size: cover;
+
+}
+
+.room {
+    display: flex;
+    max-width: 320px;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
+}
+
+.room-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.3em;
+    background-position: center;
+    background-size: cover;
+}
+
+.room:nth-of-type(1) .room-img {
+    background-image: url(jr\ suite.jpg);
+}
+
+.room:nth-of-type(2) .room-img {
+    background-image: url(double\ bed.jpg);
+}
+
+.room:nth-of-type(3) .room-img {
+    background-image: url(family\ suite.jpg);
+}
+
+.room:nth-of-type(4) .room-img {
+    background-image: url(suite.jpg);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .room-container {
+        flex-direction: column;
+        /* Switch to column layout on mobile */
+        align-items: center;
+    }
+
+    .room {
+        max-width: 100%;
+        /* Take full width on mobile */
+        margin-bottom: 2rem;
+    }
+
+}
+
+/*ROOM CSS ENDS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section__header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+
+.popular__grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.popular__card {
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.popular__content {
+    padding: 1rem;
+}
+
+.popular__card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.popular__card__header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.popular__content p {
+    color: var(--text-light);
+}
+
+@media (width < 900px) {
+
+
+    .popular__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+}
+
+@media (width < 600px) {
+
+
+    .popular__grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
+}
+
+
+
+
+
+
+.branches_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem 1rem;
+    /* Increase the top padding to 2rem (adjust as needed) */
+}
+
+
+.branches {
+    margin-top: 2rem;
+}
+
+.branches section {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.Hotel-Branches {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.Hotel-Branches h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.Hotel-Branches p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.Hotel-Branches img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.Hotel-Branches iframe {
+    width: 100%;
+    height: 200px;
+    border: 0;
+}
+
+#branch-h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.branches_table {
+    margin-top: 1rem;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.branches_table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+}
+
+.branches_table th,
+.branches_table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.branches_table th {
+    background-color: #f2f5f8;
+}
+
+.branches_table tr:hover {
+    background-color: #f8fafc;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+footer p {
+    color: #718096;
+}
+
+/* RESTAURANT CSS STARTS */
+.restaurant-body {
+    background-color: #2b3d2c;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    padding: 24px;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+}
+
+
+.restaurant-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 24px;
+    background-color: white;
+    cursor: pointer;
+    overflow: hidden;
+    max-width: clamp(320px, 70vw, 740px);
+    min-width: 320px;
+    min-height: 280px;
+    grid-column: justify;
+}
+
+.restaurant-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.restaurant-background {
+    flex: 1 1 250px;
+}
+
+.restaurant-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.restaurant-content {
+    flex: 3 1 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 16px;
+}
+
+.restaurant-content>h2 {
+    font-size: clamp(1.3rem, 2.5vw,
+            1.8rem);
+    font-weight: 700;
+    margin-bottom: clamp(0.35rem, 2vw,
+            0.55rem);
+}
+
+.restaurant-content>p {
+    font-size: clamp(1rem,
+            1.75vw, 1.1rem);
+    font-weight: 400;
+    margin: 6px 0;
+}
+
+.restaurant-content a {
+    color: #70f479;
+}
+
+.chips {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 12px 0px 16px 0px;
+}
+
+.chip {
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #EAEAEC;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.chip:hover {
+    background-color: #3db168;
+    color: #EAEAEC
+}
+
+.restaurant-action-buttons {
+    border-top: 1px solid #EAEAEC;
+    padding-top: 16px;
+    gap: 12px;
+    display: flex;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.restaurant-action-buttons a {
+    background-color: #29283F;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    flex: 1 0 240px;
+    max-width: 100%;
+}
+
+.restaurant-action-buttons a:hover {
+    text-decoration: underline;
+}
+
+.restaurant-action-buttons a.secondary {
+    background-color: inherit;
+    color: #29283F;
+    border: 1px solid #29283F;
+    flex: 1 0 80px;
+}
+
+.cool-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 250px;
+
+    background: url(pexels-rachel-claire-4846307.jpg);
+    border-radius: 16px;
+    background-size: cover;
+}
+
+.text-cut {
+    background-color: #fff;
+    padding: 12px;
+    mix-blend-mode: screen;
+    font-size: 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+/* RESTAURANT CSS ENDS */
+
+
+/* Media query for laptop screens (adjust breakpoint as needed) */
+@media (min-width: 768px) {
+    .restaurant-card {
+        max-width: 600px;
+        /* Adjust the max-width for laptop screens */
+        min-height: 380px;
+        /* Increase min-height for laptops */
+    }
+
+    .cool-heading {
+        max-width: 600px;
+        /* Adjust the max-width for laptop screens */
+        min-height: 380px;
+        /* Increase min-height for laptops */
+    }
+
+    .restaurant-content>h2 {
+        font-size: 2rem;
+        /* Increase font size for laptops */
+        margin-bottom: 0.7rem;
+        /* Increase margin for laptops */
+    }
+
+    .restaurant-content>p {
+        font-size: 0.7rem;
+        /* Increase font size for laptops */
+    }
+}
+
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+footer p {
+    color: #ffffff;
+}
